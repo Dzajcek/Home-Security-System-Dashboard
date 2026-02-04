@@ -1,1 +1,8 @@
 __pycache__/
+
+# Konfiguracja
+.env
+
+# Środowisko
+venv/
+env/

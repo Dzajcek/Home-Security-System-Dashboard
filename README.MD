@@ -1,9 +1,15 @@
-# Home Security & System Dashboard
+# 🛡️ Home Security & System Dashboard
 
-Stworzony z myślą o monitorowaniu zasobów systemowych oraz bezpieczeństwa sieci lokalnej. Projekt realizowany w celu edukacji.
+Narzędzie do monitorowania zasobów systemowych oraz analizy bezpieczeństwa sieci lokalnej.
 
-## 🚀 Cel projektu
-Celem jest zbudowanie kompleksowego narzędzia, które w czasie rzeczywistym analizuje parametry komputera oraz skanuje sieć domową w poszukiwaniu nieautoryzowanych urządzeń.
+## 🚀 O projekcie
+Projekt łączy monitorowanie wydajności hosta z pasywnym i aktywnym skanowaniem sieci w celu wykrywania urządzeń. Budowany z naciskiem na architekturę, bezpieczeństwo danych i konteneryzację.
 
-## 🛠 Technologia
-- **Język:** Python 3.x
+## 🛠️ Tech Stack
+- **Język:** Python 3.12+
+- **Biblioteki:** Scapy (Network), Psutil (System), Dotenv (Config)
+
+## ⚙️ Uruchomienie
+1. Zainstaluj wymagania: `pip install -r requirements.txt`
+2. Skonfiguruj plik `.env` (użyj `.env.example` jako wzoru).
+3. Uruchom skaner: `python app/core/network_scanner.py` (wymaga uprawnień admina).
