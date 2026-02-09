@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
-from .models import Base, SystemStat, DiskStat
+from .models import Base, SystemStat, DiskStat, NetworkDevice
+from datetime import datetime
 
 DATABASE_URL = "sqlite:///./data/monitor.db"
 
@@ -28,3 +29,25 @@ def save_system_info(cpu: float, ram: float, disks: dict):
         db.close()
 
     db.commit()
+
+def save_devices_info(devices_list: list):
+    db = SessionLocal()
+    try:
+        for dev in devices_list:
+            existing = db.query(NetworkDevice).filter(NetworkDevice.mac_address == dev['mac']).first()
+            
+            if existing:
+                existing.ip_address = dev['ip']
+                existing.last_seen = datetime.utcnow()
+            else:
+                new_dev = NetworkDevice(
+                    mac_address=dev['mac'], 
+                    ip_address=dev['ip']
+                )
+                db.add(new_dev)
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        print(f"Błąd zapisu urządzeń: {e}")
+    finally:
+        db.close()

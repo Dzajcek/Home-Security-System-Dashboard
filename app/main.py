@@ -1,6 +1,6 @@
 from core.system_stats import get_system_info
 from core.network_scanner import scanner
-from database.database import init_db, save_system_info
+from database.database import init_db, save_system_info, save_devices_info
 
 def display():
     info = get_system_info()
@@ -30,6 +30,8 @@ def main():
     info, devices = display()
 
     save_system_info(info["CPU"], info["RAM"], info["DISKS"])
-    print("\nDane zostaly zapisane do bazy danych.")
+    
+    save_devices_info(devices)
+    
 if __name__ == "__main__":
     main()
