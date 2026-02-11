@@ -1,4 +1,6 @@
 data/monitor.db
+venv/
+.venv/
 .env
 __pycache__/
-venv/
+*.py[cod]

@@ -26,3 +26,10 @@ Zaawansowane narzędzie do monitorowania zasobów systemowych oraz analizy bezpi
    python3 -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
+
+## 🌐 Interfejs Webowy (API)
+Projekt zawiera serwer FastAPI, który umożliwia zdalne wywoływanie skanów i podgląd statystyk.
+
+### Uruchomienie serwera:
+```bash
+sudo ./venv/bin/python -m uvicorn app.api.main_api:app --reload
