@@ -30,16 +30,16 @@ Zaawansowane narzędzie do monitorowania zasobów systemowych oraz analizy bezpi
    pip install -r requirements.txt
    ```
 
-### 1. Zmienne środowiskowe
+### 2. Zmienne środowiskowe
 Skopiuj plik `.env.example` do `.env` i uzupełnij dane:
 `cp app/core/.env.example app/core/.env`
 
-### 2. Automatyczny start (Systemd)
+### 3. Automatyczny start (Systemd)
 Aby projekt działał w tle i startował przy bootowaniu systemu:
 1. Skopiuj konfigurację z `home_security.service.example` do `/etc/systemd/system/home_security.service`.
 2. Przeładuj system: `sudo systemctl daemon-reload`.
 3. Uruchom usługę: `sudo systemctl enable --now home_security`.
 
-### 3. Monitoring
+### 4. Monitoring
 Sprawdź status usługi:
 `sudo systemctl status home_security`
