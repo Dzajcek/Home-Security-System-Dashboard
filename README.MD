@@ -19,17 +19,27 @@ Zaawansowane narzędzie do monitorowania zasobów systemowych oraz analizy bezpi
 - `app/api/`: Endpointy FastAPI.
 - `app/main.py`: Skrypt zbierający dane (wymaga sudo).
 
-## ⚙️ Instalacja i Uruchomienie
 
-1. **Środowisko wirtualne:**
+
+## ⚙️ Instalacja i Automatyzacja (Debian)
+
+### 1. Środowisko wirtualne:
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
+   ```
 
-## 🌐 Interfejs Webowy (API)
-Projekt zawiera serwer FastAPI, który umożliwia zdalne wywoływanie skanów i podgląd statystyk.
+### 1. Zmienne środowiskowe
+Skopiuj plik `.env.example` do `.env` i uzupełnij dane:
+`cp app/core/.env.example app/core/.env`
 
-### Uruchomienie serwera:
-```bash
-sudo ./venv/bin/python -m uvicorn app.api.main_api:app --reload
+### 2. Automatyczny start (Systemd)
+Aby projekt działał w tle i startował przy bootowaniu systemu:
+1. Skopiuj konfigurację z `home_security.service.example` do `/etc/systemd/system/home_security.service`.
+2. Przeładuj system: `sudo systemctl daemon-reload`.
+3. Uruchom usługę: `sudo systemctl enable --now home_security`.
+
+### 3. Monitoring
+Sprawdź status usługi:
+`sudo systemctl status home_security`

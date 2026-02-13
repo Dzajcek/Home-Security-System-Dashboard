@@ -1,0 +1,18 @@
+[Unit]
+Description=Home Security Dashboard FastAPI
+After=network.target
+
+[Service]
+
+User=root
+Group=root
+
+#replace user on your account name
+WorkingDirectory=/home/user/Documents/home_security_dashboard
+
+#replace user on your account name
+ExecStart=/home/user/Documents/home_security_dashboard/venv/bin/python -m uvicorn app.api.main_api:app --host 0.0.0.0 --port 8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
